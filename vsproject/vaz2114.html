@@ -1,0 +1,227 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Продажа авто</title> 
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head> 
+<body> 
+    <div class="header"> 
+        <div class="logo">AUTOP</div> 
+        <div class="menu"> 
+            <a href="index.html">Главная</a> 
+            <a href="#">Каталог</a> 
+            <a href="#">О нас</a> 
+            <a href="#">Контакты</a>
+             <a href="reg.html">Войти</a>  
+        </div> 
+    </div>
+
+    <div class="main"> 
+        <div class="left-menu"> 
+            <div class="menu-title">МОДЕЛЬ</div> 
+            <ul> 
+                <li><a href="vaz2114.html">VAZ 2114</a></li> 
+                <li><a href="priora.html">VAZ 2170 PRIORA</a></li> 
+                <li><a href="vaz2110.html">VAZ 2110</a></li> 
+                <li><a href="granta.html">GRANTA</a></li> 
+            </ul>
+            
+            <div class="menu-title">ЦЕНА</div>
+            <ul>
+                <li><a href="#vaz2114">До 200 000</a></li>
+                <li><a href="#vaz2114">До 100 000</a></li>
+            </ul>
+
+            <div class="menu-title">МАРКА</div>
+            <ul>
+                <li><a href="#vaz2114">ВАЗ</a></li>
+            </ul>
+
+            <div class="menu-title">КУЗОВ</div>
+            <ul>
+                <li><a href="#vaz2114">Хэтчбек</a></li>
+            </ul>
+           
+            <div class="menu-title">КОРОБКА ПЕРЕДАЧ</div>
+            <ul>
+                <li><a href="#vaz2114">Механика</a></li>
+            </ul>
+           
+            <div class="menu-title">Привод</div>
+            <ul>
+                <li><a href="#vaz2114">Передний</a></li>
+            </ul>
+        </div>   
+
+        <!-- Блок с машинами -->
+        <div class="cars">
+            <!-- Первый автомобиль -->
+            <div class="car-item">
+                <!-- Блок с информацией о продавце -->
+                <div class="seller-info">
+                    <div class="seller-details">
+                        <div class="seller-name">
+                            <span>👤</span> Admin
+                        </div>
+                        <div class="seller-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                    </div>
+                    <button class="call-button" title="Позвонить продавцу">
+                        <i class="fas fa-phone-alt"></i>
+                    </button>
+                </div>
+                
+                <!-- Карусель с 4 горизонтальными зонами (столбцы) -->
+                <div class="car-image carousel-container" id="carousel1">
+                    <!-- 4 горизонтальные зоны для наведения -->
+                    <div class="hover-zone zone-1" data-image="1"></div>
+                    <div class="hover-zone zone-2" data-image="2"></div>
+                    <div class="hover-zone zone-3" data-image="3"></div>
+                    <div class="hover-zone zone-4" data-image="4"></div>
+                    
+                    <!-- Изображения -->
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('https://00.img.avito.st/image/1/1.46_HR7a4T0bx8M1LjSyYqYnmTUB55s1Q8etNRHfuR0xx.rV4hHJO3_nKWrOQr6KTTA_xVjEHG_yg8KW_jCLVeSuo?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ')"></div>
+                        <div class="carousel-slide" style="background-image: url('https://80.img.avito.st/image/1/1.6fq9b7a4RROL2Mce41iy__PORxUDzscFi8NHEQ3GTRkL.6z2OSVVyBsmj7p-BLJyDh-J5gtd-6XEV2KJ8HRGC-0g')"></div>
+                        <div class="carousel-slide" style="background-image: url('https://50.img.avito.st/image/1/1.UFh-I7a4_LFIlH68UkohXDCC_rfAgn6nSI_-s86K9LvI.oPL4oOAG941qoZVrsZVuZCyFMzqmiJS_p1Q3zwT5fcc')"></div>
+                        <div class="carousel-slide" style="background-image: url('https://60.img.avito.st/image/1/1.m6vqx7a4N0LccLVP0J3rr6RmNURUZrVU3Gs1QFpuP0hc.vs11ssFYCo0mrYNRgsjbB5Cgv4FpVLJmllw4ArF6y7A')"></div>
+                    </div>
+                    
+                    <!-- Индикаторы -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-index="0"></span>
+                        <span class="indicator" data-index="1"></span>
+                        <span class="indicator" data-index="2"></span>
+                        <span class="indicator" data-index="3"></span>
+                    </div>
+                </div>
+                
+                <div class="car-info">
+                    <div class="car-name">ВАЗ 2114</div>
+                    <div class="car-price">170 000 ₽</div>
+                    <div class="car-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Тип кузова:</span>
+                            <span class="spec-value">Хэтчбек</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Состояние:</span>
+                            <span class="spec-value">Хорошее</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Пробег:</span>
+                            <span class="spec-value">185 000 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Коробка:</span>
+                            <span class="spec-value">Механика</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                    </div>
+                    <div class="car-description">
+                        Отличный автомобиль для города, полностью на ходу, свежая замена масла и фильтров. Не требует вложений.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Второй автомобиль -->
+            <div class="car-item">
+                <!-- Блок с информацией о продавце -->
+                <div class="seller-info">
+                    <div class="seller-details">
+                        <div class="seller-name">
+                            <span>👤</span> Admin
+                        </div>
+                        <div class="seller-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <button class="call-button" title="Позвонить продавцу">
+                        <i class="fas fa-phone-alt"></i>
+                    </button>
+                </div>
+                
+                <!-- Карусель с 4 горизонтальными зонами (столбцы) -->
+                <div class="car-image carousel-container" id="carousel2">
+                    <!-- 4 горизонтальные зоны для наведения -->
+                    <div class="hover-zone zone-1" data-image="1"></div>
+                    <div class="hover-zone zone-2" data-image="2"></div>
+                    <div class="hover-zone zone-3" data-image="3"></div>
+                    <div class="hover-zone zone-4" data-image="4"></div>
+                    
+                    <!-- Изображения -->
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('https://20.img.avito.st/image/1/1.0RhsJLa4ffFak__8QieLQieFf_fShf_nWoh_89yNdfva.aPL01yTNxF4oSZkHYh-ZD_4NXioPv51yFj2PY_k6gRE?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ')"></div>
+                        <div class="carousel-slide" style="background-image: url('https://20.img.avito.st/image/1/1.hYslXra4KWIT6atvIzifiG3_K2Sb_6t0E_IrYJX3IWiT.iEaxbcUqd8ve-DedRPuQ7zKTgSCJVcbFVqE1FA2dD-8?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ')"></div>
+                        <div class="carousel-slide" style="background-image: url('https://70.img.avito.st/image/1/1.Iyn5Qba4j8DP9g3Ns008KrHgjcZH4A3Wz-2Nwknoh8pP.PdEtNKGHQ2XrGTZNU3w7j06UicsR_FQjlX4oPvpO3J8')"></div>
+                        <div class="carousel-slide" style="background-image: url('https://20.img.avito.st/image/1/1.ppQAsba4Cn02BohwQL-8l0gQCHu-EIhrNh0If7AYAne2.zH7uAOywV6KXTeuwxyIi0G_0iaJJDxLvGujIGyeS4ks?cqp=2.TSzMy-m0u9ojo94xoNTr4TIkcUBjMu1L_y5Z6Lr-VHA-3xfoRpsvf1jN4IBF36LEO13sxOCjYv9KRoXzpmAFvKTQ')"></div>
+                    </div>
+                    
+                    <!-- Индикаторы -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-index="0"></span>
+                        <span class="indicator" data-index="1"></span>
+                        <span class="indicator" data-index="2"></span>
+                        <span class="indicator" data-index="3"></span>
+                    </div>
+                </div>
+                
+                <div class="car-info">
+                    <div class="car-name">ВАЗ 2114</div>
+                    <div class="car-price">155 000 ₽</div>
+                    <div class="car-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Тип кузова:</span>
+                            <span class="spec-value">Хэтчбек</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Состояние:</span>
+                            <span class="spec-value">Среднее</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Пробег:</span>
+                            <span class="spec-value">210 000 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Коробка:</span>
+                            <span class="spec-value">Механика</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                    </div>
+                    <div class="car-description">
+                        Требуется небольшой ремонт по кузову, двигатель работает отлично. Подходит для ремонта или разбора.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    <div class="footer">
+        © 2025 AutoMarket. Все права защищены.
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body> 
+</html>
+
+
+
