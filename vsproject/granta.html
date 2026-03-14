@@ -1,136 +1,225 @@
 <!DOCTYPE html> 
 <html lang="ru"> 
 <head> 
- <meta charset="UTF-8"> 
- <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
- <title>Продажа авто</title> 
- <link rel="stylesheet" href="css/style.css"> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Продажа авто</title> 
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head> 
 <body> 
-
- <div class="header"> 
- <div class="logo">AUTOP</div> 
- <div class="menu"> 
- <a href="index.html">Главная</a> 
- <a href="#">Каталог</a> 
- <a href="#">О нас</a> 
- <a href="#">Контакты</a> 
- </div> 
+    <div class="header"> 
+        <div class="logo">AUTOP</div> 
+        <div class="menu"> 
+            <a href="index.html">Главная</a> 
+            <a href="#">Каталог</a> 
+            <a href="#">О нас</a> 
+            <a href="#">Контакты</a>
+             <a href="reg.html">Войти</a>  
+        </div> 
     </div>
- 
 
- <div class="main"> 
- <div class="left-menu"> 
-    <div class="menu-title">МОДЕЛЬ</div> 
+    <div class="main"> 
+        <div class="left-menu"> 
+            <div class="menu-title">МОДЕЛЬ</div> 
+            <ul> 
+                <li><a href="vaz2114.html">VAZ 2114</a></li> 
+                <li><a href="priora.html">VAZ 2170 PRIORA</a></li> 
+                <li><a href="vaz2110.html">VAZ 2110</a></li> 
+                <li><a href="granta.html">LADA GRANTA</a></li> 
+            </ul>
+            
+            <div class="menu-title">ЦЕНА</div>
+            <ul>
+                <li><a href="#vaz2114">До 600 000</a></li>
+                <li><a href="#vaz2114">До 500 000</a></li>
+                <li><a href="#vaz2114">До 400 000</a></li>
+                <li><a href="#vaz2114">До 300 000</a></li>
+                <li><a href="#vaz2114">До 200 000</a></li>
+                <li><a href="#vaz2114">До 100 000</a></li>
+            </ul>
 
- <ul> 
-    <li><a href="vaz2114.html">VAZ 2114</a></li> 
-    <li><a href="priora.html">PRIORA</a></li> 
-    <li><a href="vaz2110.html">VAZ 2110</a></li> 
-    <li><a href="granta.html">GRANTA</a></li> 
- </ul>
-    
- <div class="menu-title">ЦЕНА</div>
- <ul>
-    <li><a href="#vaz2114">До 600 00</a></li>
-    <li><a href="#vaz2114">До 500 000</a></li>
-    <li><a href="#vaz2114">До 400 000</a></li>
- </ul>
- <div class="menu-title"> МАРКА</div>
- <ul>
-    <li><a href="#vaz2114"> ВАЗ</a></li>
- </ul>
-   
- <div class="menu-title"> КУЗОВ </div>
- <ul>
-    <li><a href="#vaz2114"> Седан </a></li>
- </ul>
-   
- <div class="menu-title"> КОРОБКА ПЕРЕДАЧ </div>
- <ul>
-    <li><a href="#vaz2114"> Механика </a></li>
- </ul>
-   
- <div class="menu-title"> Привод </div>
- <ul>
-    <li><a href="#vaz2114"> Передний </a></li>
- </ul>
+            <div class="menu-title">МАРКА</div>
+            <ul>
+                <li><a href="#vaz2114">ВАЗ</a></li>
+            </ul>
 
-</div>   
+            <div class="menu-title">КУЗОВ</div>
+            <ul>
+                <li><a href="#vaz2114"> Седан</a></li>
+            </ul>
+           
+            <div class="menu-title">КОРОБКА ПЕРЕДАЧ</div>
+            <ul>
+                <li><a href="#vaz2114">Механика</a></li>
+            </ul>
+           
+            <div class="menu-title">Привод</div>
+            <ul>
+                <li><a href="#vaz2114">Полный</a></li>
+            </ul>
+        </div>   
 
         <!-- Блок с машинами -->
         <div class="cars">
- 
+            <!-- Первый автомобиль -->
             <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/q3eFavm-2P2B8r2Vjc0f0e7h3ni7KWLRgEWx59Jl8W_beIk_H9lq5seZrdwI-DOaoxXMf68Ob4QIbxh6/gen1200.jpg" alt="GRANTA 1">
+                <!-- Блок с информацией о продавце -->
+                <div class="seller-info">
+                    <div class="seller-details">
+                        <div class="seller-name">
+                            <span>👤</span> Admin
+                        </div>
+                        <div class="seller-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                    </div>
+                    <button class="call-button" title="Позвонить продавцу">
+                        <i class="fas fa-phone-alt"></i>
+                    </button>
                 </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  450 000 ₽</div>
+                
+                <!-- Карусель с 4 горизонтальными зонами (столбцы) -->
+                <div class="car-image carousel-container" id="carousel1">
+                    <!-- 4 горизонтальные зоны для наведения -->
+                    <div class="hover-zone zone-1" data-image="1"></div>
+                    <div class="hover-zone zone-2" data-image="2"></div>
+                    <div class="hover-zone zone-3" data-image="3"></div>
+                    <div class="hover-zone zone-4" data-image="4"></div>
+                    
+                    <!-- Изображения -->
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('https://s11.auto.drom.ru/photo/v2/q3eFavm-2P2B8r2Vjc0f0e7h3ni7KWLRgEWx59Jl8W_beIk_H9lq5seZrdwI-DOaoxXMf68Ob4QIbxh6/gen1200.jpg')"></div>
+                    </div>
+                    
+                    <!-- Индикаторы -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-index="0"></span>
+                    </div>
+                </div>
+                
+                <div class="car-info">
+                    <div class="car-name">LADA GRANTA</div>
+                    <div class="car-price">570 000 ₽</div>
+                    <div class="car-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Тип кузова:</span>
+                            <span class="spec-value">Седан</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Состояние:</span>
+                            <span class="spec-value">Отличное</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Пробег:</span>
+                            <span class="spec-value">185 000 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Коробка:</span>
+                            <span class="spec-value">Механика</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                    </div>
+                    <div class="car-description">
+                        Отличный автомобиль для города, полностью на ходу, свежая замена масла и фильтров. Не требует вложений.
+                    </div>
+                </div>
             </div>
 
+            <!-- Второй автомобиль -->
             <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/wqytWutvS92mLHTvwWJFR5rCt9rNVVLW8tdbcd5-yfMmS5E4-v3Co-NBwPPVJKNAXLOsdQeBMvLuqye8/gen1200.jpg" alt="GRANTA 2">
+                <!-- Блок с информацией о продавце -->
+                <div class="seller-info">
+                    <div class="seller-details">
+                        <div class="seller-name">
+                            <span>👤</span> Admin
+                        </div>
+                        <div class="seller-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <button class="call-button" title="Позвонить продавцу">
+                        <i class="fas fa-phone-alt"></i>
+                    </button>
                 </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  440 000 ₽</div>
-            </div>
-
-            <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/9uUI2-uFk4taV65M6byRLk77ZHtQZF7t6NLln8DXojmhrzsnoHUCrCOy8Z6Bc9k_-htnql_Ham0zOE_g/gen1200.jpg" alt="GRANTA 3">
+                
+                <!-- Карусель с 4 горизонтальными зонами (столбцы) -->
+                <div class="car-image carousel-container" id="carousel2">
+                    <!-- 4 горизонтальные зоны для наведения -->
+                    <div class="hover-zone zone-1" data-image="1"></div>
+                    <div class="hover-zone zone-2" data-image="2"></div>
+                    <div class="hover-zone zone-3" data-image="3"></div>
+                    <div class="hover-zone zone-4" data-image="4"></div>
+                    
+                    <!-- Изображения -->
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('https://s11.auto.drom.ru/photo/v2/wqytWutvS92mLHTvwWJFR5rCt9rNVVLW8tdbcd5-yfMmS5E4-v3Co-NBwPPVJKNAXLOsdQeBMvLuqye8/gen1200.jpg')"></div>
+                        <div class="carousel-slide" style="background-image: url('')"></div>
+                        <div class="carousel-slide" style="background-image: url('')"></div>
+                        <div class="carousel-slide" style="background-image: url('')"></div>
+                    </div>
+                    
+                    <!-- Индикаторы -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-index="0"></span>
+                        <span class="indicator" data-index="1"></span>
+                        <span class="indicator" data-index="2"></span>
+                        <span class="indicator" data-index="3"></span>
+                    </div>
                 </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  410 000 ₽</div>
-            </div>
-
-            <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/uKLlcEniHGL4lcb7ruek9GxKshrsKC71Xiw8qrypOgFJiaCNy0-qw_6OjBHuGK-WJgz2nEHGfps0BgDF/gen1200.jpg" alt="GRANTA 4">
+                
+                <div class="car-info">
+                    <div class="car-name">LADA GRANTA</div>
+                    <div class="car-price">585 000 ₽</div>
+                    <div class="car-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Тип кузова:</span>
+                            <span class="spec-value">Седан</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Состояние:</span>
+                            <span class="spec-value">Отличное</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Пробег:</span>
+                            <span class="spec-value">210 000 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Коробка:</span>
+                            <span class="spec-value">Механика</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                    </div>
+                    <div class="car-description">
+                        Требуется небольшой ремонт по кузову, двигатель работает отлично. Подходит для ремонта или разбора.
+                    </div>
                 </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  510 000 ₽</div>
-            </div>
-
-            <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/XAwLzKObHKkdn4LWoQ0pZOIlNazYHWGUuQ2wlgJ4oBQrn-5G-WzPSrmnSN6KgsWB_WKnSg7ZDcqA5YWg/gen1200.jpg" alt="GRANTA 5">
-                </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  390 000 ₽</div>
-            </div>
-
-            <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/qIDDXTSy6NxnGbz0eRysK_2kVWzXKXvtS-DoCyYkYlh8DTshmKMVthh1gDewhotWtty8bXu7EfPzHLlp/gen1200.jpg" alt="GRANTA 6">
-                </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  500 000 ₽</div>
-            </div>
-
-            <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/hO346PopBvqWdqPOdF5jAQE8zrQ8KEqNx8byy8THnjEhriG56RyZ4DqkR47eq9Mz3W79WQD1iA7nyerx/gen1200.jpg" alt="GRANTA 7">
-                </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  420 000 ₽</div>
-            </div>
-
-            <div class="car-item">
-                <div class="car-image">
-                    <img src="https://s11.auto.drom.ru/photo/v2/Dc_cKSlFaQ7NjBAQo5MJpQpUQXVO0_7mFCfrHL7XsGOHK5dLSfaS0PeA5kdq6B68Gl2pRmQ9GYSchQtZ/gen1200.jpg" alt="GRANTA 8">
-                </div>
-                <div class="car-name"> LADA GRANTA </div>
-                <div class="car-price">  600 000 ₽</div>
-            </div>
             </div>
         </div>
-    </div>
- 
-
+    </div> 
+    
     <div class="footer">
         © 2025 AutoMarket. Все права защищены.
     </div>
-</body>
+
+    <script src="js/script.js"></script>
+
+</body> 
 </html>
+
+
+
