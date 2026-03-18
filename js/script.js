@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initCarousel(`carousel${i}`);
     }
 
-    // ========== ТЕЛЕФОННЫЙ ПОПАП ==========
+   // ========== ТЕЛЕФОННЫЙ ПОПАП ==========
     // Функция для создания уведомления о копировании
 
 
@@ -319,4 +319,33 @@ document.addEventListener('DOMContentLoaded', function() {
     applyFilters();
     
     console.log('Скрипт загружен, кнопок найдено:', document.querySelectorAll('.call-button').length);
+
 });
+
+// Простая функция для отправки данных
+async function sendData(url, data) {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(data)
+        });
+        return await response.json();
+    } catch (error) {
+        return { success: false, message: 'Ошибка соединения' };
+    }
+}
+
+// Показать сообщение
+function showMessage(text, type) {
+    const msg = document.getElementById('message');
+    msg.textContent = text;
+    msg.className = `message ${type}`;
+    msg.style.display = 'block';
+    
+    setTimeout(() => {
+        msg.style.display = 'none';
+    }, 3000);
+}
