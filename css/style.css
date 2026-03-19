@@ -58,7 +58,7 @@ body::before {
 }
  
 .logo {
-    margin-left: 25px;
+    margin-left: 20px;
     align-items: center; 
     justify-content: center;
     height: 100%;         
@@ -74,7 +74,8 @@ body::before {
 .menu a {
     color: #fff;
     text-decoration: none;
-    margin-right: 25px;
+    margin-right: 10px;
+    font-size: 18px;
 }
  
 .menu a:hover {
@@ -82,7 +83,6 @@ body::before {
 }
  
 .main {
-    margin-right: 45px;
     display: flex;
     padding: 20px;
     max-width: 1200px;
@@ -761,7 +761,7 @@ body::before {
     padding: 2.5rem;
     width: 100%;
     max-width: 450px;
-    border: 2px solid orange;
+
 }
 
 .registration-title {
