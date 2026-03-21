@@ -1,3 +1,3 @@
-# project3ip
+Курсовой проект
 
-Курсовая работа
+Просмотр сайта - https://wendside.github.io/project/header.html
