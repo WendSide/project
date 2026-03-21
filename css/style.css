@@ -52,21 +52,8 @@ body::before {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-around;
 }
- 
-
-
-
-
-
-
-
-
-
-
-
-
 
 .logo {
     font-size: 24px;
