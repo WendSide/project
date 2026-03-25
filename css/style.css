@@ -1426,8 +1426,37 @@ textarea.form-input {
 }
 
 
+/* Стиль под кнопку регистрации V2*/
+.btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
 
+.btn:hover {
+    background-color: #e67e00; /* Более темный оттенок оранжевого */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
+/* Эффект при клике */
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Эффект при фокусе (для доступности) */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.4);
+}
 
 
 /* ===== Адаптация для разных экранов ===== */
