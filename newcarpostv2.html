@@ -12,8 +12,8 @@
         <div class="menu">
             <a href="header.html">Каталог</a>
             <a href="love.html">Избранное</a>
-            <a href="reg.html">Войти</a>
-            <a href="newcarpost.html" class="active">✚ Разместить объявление</a>
+            <a href="newreg.html">Войти</a>
+            <a href="newcarpostv2.html">✚ Разместить обьявление</a>
         </div>
     </div>
 
@@ -26,37 +26,37 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="mark">Марка *</label>
-                        <input type="text" id="mark" name="mark" class="form-input" required>
+                        <input type="text" id="mark" name="mark" placeholder="BMW" class="form-input" required>
                     </div>
 
                     <div class="form-group">
                         <label for="model">Модель *</label>
-                        <input type="text" id="model" name="model" class="form-input" required>
+                        <input type="text" id="model" name="model" placeholder="X5" class="form-input" required>
                     </div>
 
                     <div class="form-group">
                         <label for="release">Год выпуска *</label>
-                        <input type="number" id="release" name="release" class="form-input" min="1950" max="2026" required>
+                        <input type="number" id="release" name="release" placeholder="2005" class="form-input" min="1950" max="2026" required>
                     </div>
 
                     <div class="form-group">
                         <label for="price">Цена (₽) *</label>
-                        <input type="number" id="price" name="price" class="form-input" required>
+                        <input type="number" id="price" name="price" placeholder="1 000 000" class="form-input" required>
                     </div>
 
                     <div class="form-group">
                         <label for="mileage">Пробег (км)</label>
-                        <input type="number" id="mileage" name="mileage" class="form-input">
+                        <input type="number" id="mileage" name="mileage" placeholder="50 000" class="form-input">
                     </div>
 
                     <div class="form-group">
                         <label for="ecapacity">Объем двигателя (л)</label>
-                        <input type="text" id="ecapacity" name="ecapacity" class="form-input">
+                        <input type="text" id="ecapacity" name="ecapacity" placeholder="2.0 " class="form-input">
                     </div>
 
                     <div class="form-group">
                         <label for="transmission">Коробка передач</label>
-                        <select id="transmission" name="transmission" class="form-input">
+                        <select id="transmission" name="transmission"  class="form-input">
                             <option value="">Выберите</option>
                             <option value="mechanical">Механика</option>
                             <option value="automatic">Автомат</option>
@@ -88,22 +88,22 @@
 
                     <div class="form-group full-width">
                         <label for="description">Описание</label>
-                        <textarea id="description" name="description" class="form-input" rows="4"></textarea>
+                        <textarea id="description" name="description" placeholder="Не бит, не крашен, ни одной детали не крутилось" class="form-input" rows="4"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="sity">Город *</label>
-                        <input type="text" id="sity" name="sity" class="form-input" required>
+                        <input type="text" id="sity" name="sity" placeholder="Москва" class="form-input" required>
                     </div>
 
                     <div class="form-group">
                         <label for="numberphone">Телефон *</label>
-                        <input type="tel" id="numberphone" name="numberphone" class="form-input" required>
+                        <input type="tel" id="numberphone" name="numberphone" placeholder="+7 900 000 00 00"  class="form-input" required>
                     </div>
 
                     <div class="form-group">
                         <label for="owner">Ваше имя *</label>
-                        <input type="text" id="owner" name="owner" class="form-input" required>
+                        <input type="text" id="owner" name="owner" placeholder="Игорь" class="form-input" required>
                     </div>
                 </div>
 
