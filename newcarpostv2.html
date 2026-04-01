@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разместить объявление | SOPHISTICATED</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">SOPHISTICATED MOTORS</div>
+        <div class="menu">
+            <a href="header.html">Каталог</a>
+            <a href="love.html">Избранное</a>
+            <a href="newreg.html">Войти</a>
+            <a href="newcarpostv2.html">✚ Разместить обьявление</a>
+        </div>
+    </div>
+
+    <div class="registration-container">
+        <div class="newcar-card">
+            <h1 class="registration-title">Разместить объявление</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">Заполните информацию об автомобиле</p>
+
+            <form class="registration-form" id="carPostForm">
+                <div class="form-grid">
+                    <!-- <div class="form-group">
+                        <label for="mark">Марка *</label>
+                        <input type="text" id="mark" name="mark" placeholder="BMW" class="form-input" required>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="mark">Марка *</label>
+                        <select id="mark" name="mark"  class="form-input">
+                            <option value="">Выбор</option>
+                            <option value="VAZ">VAZ</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="model">Модель *</label>
+                        <input type="text" id="model" name="model" placeholder="X5" class="form-input" required>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="model">Модель * *</label>
+                        <select id="model" name="model"  class="form-input">
+                            <option value="">Выбор</option>
+                            <option value="2005">2005</option>
+                            <option value="2006">2006</option>
+                            <option value="2007">2007</option>
+                            <option value="2008">2008</option>
+                            <option value="2009">2009</option>
+                            <option value="2099">2099</option>
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="release">Год выпуска *</label>
+                        <input type="number" id="release" name="release" placeholder="2005" class="form-input" min="1950" max="2026" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Цена (₽) *</label>
+                        <input type="number" id="price" name="price" placeholder="1 000 000" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mileage">Пробег (км)</label>
+                        <input type="number" id="mileage" name="mileage" placeholder="50 000" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ecapacity">Объем двигателя (л)</label>
+                        <input type="text" id="ecapacity" name="ecapacity" placeholder="2.0 " class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transmission">Коробка передач</label>
+                        <select id="transmission" name="transmission"  class="form-input">
+                            <option value="">Выбор</option>
+                            <option value="Механическая">Механика</option>
+                            <option value="Автомат">Автомат</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="condition">Состояние *</label>
+                        <select id="condition" name="condition" class="form-input" required>
+                            <option value="">Выбор</option>
+                            <option value="Новый">Новый</option>
+                            <option value="Отличное">Отличное</option>
+                            <option value="Хорошее">Хорошее</option>
+                            <option value="Среднее">Среднее</option>
+                            <option value="Требует ремонта">Требует ремонта</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numberowners">Количество владельцев</label>
+                        <select id="numberowners" name="numberowners" class="form-input">
+                            <option value="">Выбор</option>
+                            <option value="1">1 владелец</option>
+                            <option value="2">2 владельца</option>
+                            <option value="3">3 владельца</option>
+                            <option value="4+">4 и более</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">Описание</label>
+                        <textarea id="description" name="description" placeholder="Не бит, не крашен, ни одной детали не крутилось" class="form-input" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sity">Город *</label>
+                        <input type="text" id="sity" name="sity" placeholder="Москва" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numberphone">Телефон *</label>
+                        <input type="tel" id="numberphone" name="numberphone" placeholder="+7 900 000 00 00"  class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="owner">Ваше имя *</label>
+                        <input type="text" id="owner" name="owner" placeholder="Игорь" class="form-input" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="register-btn">Опубликовать объявление</button>
+                <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 1rem;">* — обязательные поля</p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 Sophisticated Motors. Все права защищены.</p>
+    </div>
+
+    <script src="js/post.js"></script>
+</body>
+</html>
