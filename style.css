@@ -1,0 +1,1541 @@
+/* css/style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+ 
+/* Стили для фиксации футера внизу страницы */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+ 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Фоновое изображение для всего body */
+    /* background-image: url('../img/backimg.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Полупрозрачный оверлей для лучшей читаемости контента */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    z-index: 0;
+    pointer-events: none; /* Чтобы overlay не мешал кликам */
+}
+
+/* Все основные контейнеры должны быть выше overlay */
+.header, .registration-container, .footer, .main, .left-menu, .cars, .brands-section {
+    position: relative;
+    z-index: 1;
+}
+ 
+.header {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: orange;
+}
+ 
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+ 
+.menu a:hover {
+    color: orange;
+}
+ 
+.main {
+    display: flex;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1 0 auto;
+}
+ 
+.left-menu {
+    width: 250px;
+    background: #fff;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+ 
+.menu-title {
+    font-weight: bold;
+    margin: 15px 0 10px 0;
+    border-bottom: 2px solid orange;
+    padding-bottom: 5px;
+}
+ 
+.menu-title:first-child {
+    margin-top: 0;
+}
+ 
+.left-menu ul {
+    list-style: none;
+}
+ 
+.left-menu li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+ 
+.left-menu a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+ 
+.left-menu a:hover {
+    color: orange;
+    padding-left: 5px;
+}
+ 
+/* Стили для блока с машинами */
+.cars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-content: flex-start;
+}
+ 
+/* Стили для карточки */
+.car-item {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+ 
+.car-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+ 
+/* Стили для карусели со столбцами */
+.carousel-container {
+    position: relative;
+    width: 280px;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f5f5f5;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.carousel-images {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* 4 горизонтальные зоны для наведения */
+.hover-zone {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
+    background: transparent;
+}
+
+.zone-1 {
+    top: 0;
+    left: 0;
+}
+
+.zone-2 {
+    top: 0;
+    left: 25%;
+}
+
+.zone-3 {
+    top: 0;
+    left: 50%;
+}
+
+.zone-4 {
+    top: 0;
+    left: 75%;
+}
+
+.zone-1:hover,
+.zone-2:hover,
+.zone-3:hover,
+.zone-4:hover {
+    background: transparent;
+}
+
+/* Индикаторы */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.indicator.active {
+    background: orange;
+    transform: scale(1.2);
+    box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+}
+
+.indicator:hover {
+    background: orange;
+    transform: scale(1.1);
+}
+
+/* Контейнер для информации */
+.car-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+ 
+/* Заголовок и цена */
+.car-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+ 
+.car-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: orange;
+    margin-bottom: 10px;
+}
+ 
+/* Сетка характеристик */
+.car-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 20px;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+ 
+.spec-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+ 
+.spec-label {
+    font-size: 14px;
+    color: #666;
+    min-width: 90px;
+}
+ 
+.spec-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+ 
+/* Описание */
+.car-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    padding: 10px 0;
+    border-top: 1px solid orange;
+    margin-top: 5px;
+}
+ 
+.footer {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Стили для фильтров */
+.active-filter {
+    color: orange !important;
+    font-weight: bold;
+    padding-left: 10px !important;
+}
+
+/* Стили для поиска */
+.search-block {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.search-input:focus {
+    border-color: orange;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.1);
+}
+
+/* Стили для диапазона цен */
+.price-range {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.price-inputs input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.price-inputs input:focus {
+    border-color: orange;
+    outline: none;
+}
+
+.apply-price-btn {
+    width: 100%;
+    background: orange;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 13px;
+}
+
+.apply-price-btn:hover {
+    background: #ff8c00;
+}
+
+/* Кнопка сброса фильтров */
+.reset-block {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.clear-filters {
+    width: 100%;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    color: #333;
+}
+
+.clear-filters:hover {
+    background: orange;
+    color: white;
+    border-color: orange;
+}
+
+/* Индикация скрытых элементов */
+.car-item[style*="display: none"] {
+    display: none !important;
+}
+
+/* Анимация при фильтрации */
+.car-item {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Обновленный блок с информацией о продавце */
+.seller-info {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 5px 5px 5px 15px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3), 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    border: 2px solid orange;
+    z-index: 30;
+}
+
+.seller-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.seller-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+.seller-name span {
+    color: orange;
+    font-size: 16px;
+}
+
+.seller-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star {
+    color: #ddd;
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.star.filled {
+    color: orange;
+}
+
+/* Зеленая кнопка звонка */
+.call-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #6baf4c;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+    margin-left: 5px;
+}
+
+
+.cont-izbr {
+    position: absolute;
+    top: 24px;
+    right: 165px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 30;
+}
+
+
+/* Кнопка добавления в избранное */
+.call-button-izbra {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: orange;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+    margin-left: 5px;
+}
+
+.call-button:hover {
+    background: orange;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.call-button:hover {
+    background: #45a049;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.call-button:active {
+    transform: scale(0.95);
+}
+
+.call-button i {
+    font-size: 16px;
+}
+
+/* Стили для контейнера кнопки звонка и попапа */
+.call-button-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Стили для попапа с телефоном */
+.phone-popup {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    transform: translateY(-50%);
+    background: white;
+    border: 2px solid orange;
+    border-radius: 30px;
+    padding: 8px 15px;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+/* Стрелочка попапа */
+.phone-popup::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -8px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid orange;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+/* Телефонный номер */
+.phone-number {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.phone-number:hover {
+    color: orange;
+}
+
+/* Подсказка */
+.phone-hint {
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Активное состояние попапа */
+.phone-popup.active {
+    display: block;
+}
+
+/* Анимация появления */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+    
+    .left-menu {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .car-item {
+        flex-direction: column;
+    }
+    
+    .carousel-container {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .seller-info {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 15px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .phone-popup {
+        right: auto;
+        left: 50%;
+        top: -80px;
+        transform: translateX(-50%);
+    }
+    
+    .phone-popup::after {
+        top: auto;
+        bottom: -8px;
+        right: 50%;
+        transform: translateX(50%) rotate(90deg);
+    }
+    
+    .car-specs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .menu a {
+        margin: 0 10px;
+    }
+    
+    .carousel-container {
+        height: 200px;
+    }
+    
+    .car-name {
+        font-size: 20px;
+    }
+    
+    .car-price {
+        font-size: 24px;
+    }
+}
+
+/*Регистрация */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    padding: 0.5rem 0;
+    transition: border-bottom 0.3s;
+}
+
+.menu a:hover {
+    border-bottom: 2px solid #e74c3c;
+}
+
+/* Контейнер регистрации */
+.registration-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    /* Убираем фон, так как фон теперь на body */
+}
+
+.registration-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 450px;
+
+}
+
+.registration-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+/* Форма */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Стили для сообщений валидации */
+.validation-message {
+    margin: 0.3rem 0 0 0;
+    font-size: 0.85rem;
+    min-height: 1.2rem;
+}
+
+.validation-message.error {
+    color: #e74c3c;
+}
+
+.validation-message.success {
+    color: #27ae60;
+}
+
+/* Чекбокс */
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.form-checkbox input {
+    margin-right: 0.5rem;
+    width: auto;
+}
+
+.form-checkbox label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-checkbox a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.form-checkbox a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопка */
+.register-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+}
+
+.register-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Ссылка на вход */
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для header страницы */
+
+/* Секция с марками в 3 столбца */
+.brands-section {
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон */
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    border-radius: 2px;
+}
+
+/* 3 колонки */
+.brands-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Каждая колонка */
+.brand-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Элемент марки */
+.brand-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.brand-item:hover {
+    background: #fff;
+    border-color: #ff6b6b;
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.1);
+}
+
+.brand-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.brand-count {
+    font-size: 14px;
+    color: #999;
+    background: rgba(0,0,0,0.03);
+    padding: 4px 10px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.brand-item:hover .brand-count {
+    background: orange;
+    color: white;
+}
+
+/* Ссылка на все марки */
+.all-brands-link {
+    text-align: center;
+}
+
+.show-all-brands {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    background: linear-gradient(45deg, orange, rgb(243, 165, 20));
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px orange;
+}
+
+.show-all-brands:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px orange;
+}
+
+.show-all-brands i {
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+
+.show-all-brands:hover i {
+    transform: translateX(5px);
+}
+
+/* Стили для brand-item как ссылки */
+.brand-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========== АДАПТИВНЫЕ СТИЛИ ========== */
+
+/* Планшеты (до 992px) */
+@media screen and (max-width: 992px) {
+    .main {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .left-menu {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+    }
+    
+    .brands-columns {
+        gap: 15px;
+    }
+    
+    .car-item {
+        padding: 15px;
+    }
+    
+    .car-name {
+        padding-right: 180px;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media screen and (max-width: 768px) {
+    /* Шапка */
+    .header {
+        padding: 12px 15px;
+    }
+    
+    .logo {
+        font-size: 22px;
+    }
+    
+    .menu {
+        gap: 10px;
+    }
+    
+    .menu a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    /* Карточка автомобиля */
+    .car-item {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .carousel-container {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .car-name {
+        font-size: 22px;
+        padding-right: 0;
+        margin-top: 10px;
+    }
+    
+    .car-price {
+        font-size: 24px;
+    }
+    
+    .car-specs {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+    }
+    
+    .spec-item {
+        flex-wrap: wrap;
+    }
+    
+    .spec-label {
+        min-width: 100px;
+    }
+    
+    /* Блок продавца */
+    .seller-info {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        margin-bottom: 15px;
+        background: white;
+        border: 2px solid orange;
+        padding: 8px 12px;
+    }
+    
+    .call-button-container {
+        margin-left: auto;
+    }
+    
+    .phone-popup {
+        right: auto;
+        left: 50%;
+        top: -80px;
+        transform: translateX(-50%);
+    }
+    
+    .phone-popup::after {
+        top: auto;
+        bottom: -8px;
+        right: 50%;
+        transform: translateX(50%) rotate(90deg);
+    }
+    
+    /* Бренды */
+    .brands-section {
+        margin: 10px;
+        padding: 30px 15px;
+    }
+    
+    .brands-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .brand-item {
+        padding: 10px 12px;
+    }
+    
+    .brand-name {
+        font-size: 14px;
+    }
+    
+    .brand-count {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+    
+    /* Формы */
+    .registration-card {
+        padding: 25px 20px;
+    }
+    
+    .registration-title {
+        font-size: 24px;
+    }
+    
+    .form-input {
+        padding: 10px;
+    }
+    
+    .register-btn {
+        padding: 12px;
+    }
+}
+
+/* Маленькие мобильные устройства (до 480px) */
+@media screen and (max-width: 480px) {
+    /* Шапка */
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 12px;
+    }
+    
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .menu a {
+        margin: 0 5px;
+    }
+    
+    /* Карусель */
+    .carousel-container {
+        height: 200px;
+    }
+    
+    .carousel-indicators {
+        gap: 6px;
+    }
+    
+    .indicator {
+        width: 6px;
+        height: 6px;
+    }
+    
+    /* Информация об авто */
+    .car-name {
+        font-size: 20px;
+    }
+    
+    .car-price {
+        font-size: 22px;
+    }
+    
+    .car-specs {
+        padding: 10px;
+    }
+    
+    .spec-label {
+        min-width: 80px;
+        font-size: 13px;
+    }
+    
+    .spec-value {
+        font-size: 14px;
+    }
+    
+    .car-description {
+        font-size: 13px;
+    }
+    
+    /* Бренды */
+    .brands-section {
+        padding: 20px 10px;
+    }
+    
+    .brands-columns {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    /* Формы */
+    .registration-container {
+        padding: 15px;
+    }
+    
+    .registration-card {
+        padding: 20px 15px;
+    }
+    
+    .form-group label {
+        font-size: 13px;
+    }
+    
+    .form-checkbox {
+        font-size: 12px;
+    }
+    
+    .register-btn {
+        font-size: 15px;
+        padding: 10px;
+    }
+    
+    .login-link {
+        font-size: 13px;
+    }
+    
+    /* Фильтры - адаптация для маленьких экранов */
+    .left-menu {
+        padding: 15px;
+    }
+    
+    .price-inputs {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .price-inputs input {
+        flex: 1 1 120px;
+    }
+    
+    .price-inputs span {
+        width: auto;
+        padding: 0 5px;
+    }
+    
+    .search-input {
+        padding: 10px;
+    }
+    
+    .clear-filters {
+        padding: 10px;
+    }
+}
+
+/* Альбомная ориентация на мобильных */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .carousel-container {
+        height: 180px;
+    }
+    
+    .car-item {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .brands-columns {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===== Стили для страницы размещения объявления ===== */
+
+/* Активная ссылка в меню */
+.menu a.active {
+    color: orange;
+    border-bottom: 2px solid orange;
+}
+
+/* Сетка формы в 3 колонки */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Поля, которые занимают всю ширину (описание) */
+.form-group.full-width {
+    grid-column: span 3;
+}
+
+/* Стили для текстовых полей формы */
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.form-input:focus {
+    border-color: orange;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 165, 0, 0.3);
+}
+
+/* Стили для select */
+select.form-input {
+    background-color: white;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+}
+
+/* Стили для textarea */
+textarea.form-input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Стили для кнопки отправки */
+.register-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.register-btn:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+}
+
+/* Стили для полей с ошибками */
+.form-input.error {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+}
+
+/* Сообщения валидации */
+.validation-message {
+    margin: 0.3rem 0 0 0;
+    font-size: 0.8rem;
+    min-height: 1.2rem;
+    color: #e74c3c;
+}
+
+.newcar-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Дополнительный стиль для заголовка на странице размещения */
+.registration-title {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+
+/* Стиль под кнопку регистрации V2*/
+.btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #e67e00; /* Более темный оттенок оранжевого */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Эффект при клике */
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Эффект при фокусе (для доступности) */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.4);
+}
+
+
+/* ===== Адаптация для разных экранов ===== */
+
+/* Планшеты (до 992px) - 2 колонки */
+@media screen and (max-width: 992px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .form-group.full-width {
+        grid-column: span 2;
+    }
+}
+
+/* Мобильные устройства (до 768px) - 1 колонка */
+@media screen and (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    
+    .registration-card {
+        padding: 1.5rem;
+    }
+    
+    .registration-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Маленькие мобильные устройства (до 480px) */
+@media screen and (max-width: 480px) {
+    .registration-card {
+        padding: 1rem;
+    }
+    
+    .register-btn {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+    
+    .form-input {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+    }
+}
+
+
+
+
