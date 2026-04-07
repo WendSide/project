@@ -101,3 +101,245 @@ owner  -->
         echo  $row['id'] ." Марка ". $row['mark'] . " Модель " . $row['model'] . " Выпущен " . $row['release'] . " Цена " . $row['price'] . " Пробег " . $row['mileage'] . " Мощность двигателя " . $row['ecapacity'] . " Коробка передач " . $row['transmission'] . " Состояние " . $row['condition'] . " Количество владельцев " . $row['numberowners']  . " Описание авто " . $row['description'] . " Город " . $row['sity'] . " Номер владельца " . $row['numberphone']  . " Владелец " . $row['owner'];
         echo  '                                                                                                                                                                                                                                                       ';
     } -->
+
+
+
+
+
+редлайн
+
+
+
+// Асинхронная функция для получения данных с сервера по ID автомобиля
+// id - идентификатор автомобиля, obj_dom - DOM элемент, куда будем выводить данные
+async function id_to_server(id, obj_dom) {
+    // Формируем URL для запроса к серверу. /get?id= - это GET параметр
+    let url = `http://localhost/myserver/carpost.php/get?id=${id}`
+    
+    // Отправляем GET запрос на сервер с помощью fetch (асинхронно)
+    let response = await fetch(url, {
+        method: 'GET',           // Тип запроса - GET (получение данных)
+        headers: { Accept: 'application/json' }, // Говорим серверу, что ждем JSON
+    })
+
+    // Преобразуем ответ сервера из JSON строки в JavaScript объект/массив
+    // await ждет, пока данные полностью загрузятся
+    let data = await response.json()
+    
+    // Очищаем содержимое блока перед заполнением новыми данными
+    // innerHTML = '' удаляет все дочерние элементы внутри obj_dom
+    obj_dom.innerHTML = ''
+    
+    // Перебираем массив с данными об автомобилях с помощью forEach
+    // item - это текущий объект с данными об одном автомобиле
+    data.forEach(item => {
+        // Создаем новый div элемент для карточки автомобиля
+        let card = document.createElement('div')
+        // Добавляем CSS класс для стилизации карточки
+        card.className = 'car-card'
+        
+        // Формируем HTML содержимое карточки с помощью шаблонной строки (``)
+        // item.название_поля - обращаемся к свойствам объекта автомобиля
+        card.innerHTML = `
+            <h3>${item.mark} ${item.model}</h3>           <!-- Заголовок: марка и модель -->
+            <p><strong>ID:</strong> ${item.id}</p>         <!-- ID автомобиля -->
+            <p><strong>Марка:</strong> ${item.mark}</p>    <!-- Марка -->
+            <p><strong>Модель:</strong> ${item.model}</p>  <!-- Модель -->
+            <p><strong>Год выпуска:</strong> ${item.release}</p>  <!-- Год -->
+            <p><strong>Цена:</strong> ${item.price} ₽</p>        <!-- Цена -->
+            <p><strong>Пробег:</strong> ${item.mileage} км</p>   <!-- Пробег -->
+            <p><strong>Мощность двигателя:</strong> ${item.ecapacity} л.с.</p> <!-- Мощность -->
+            <p><strong>Коробка передач:</strong> ${item.transmission}</p>      <!-- КПП -->
+            <p><strong>Состояние:</strong> ${item.condition}</p>               <!-- Состояние -->
+            <p><strong>Кол-во владельцев:</strong> ${item.numberowners}</p>    <!-- Владельцы -->
+            <p><strong>Описание:</strong> ${item.description}</p>              <!-- Описание -->
+            <p><strong>Город:</strong> ${item.sity}</p>                        <!-- Город -->
+            <p><strong>Телефон:</strong> ${item.numberphone}</p>               <!-- Телефон -->
+            <p><strong>Владелец:</strong> ${item.owner}</p>                    <!-- Владелец -->
+            <hr>  <!-- Горизонтальная линия-разделитель между карточками -->
+        `
+        
+        // Добавляем созданную карточку в DOM элемент (блок контента)
+        obj_dom.appendChild(card)
+    })
+    
+    // Добавляем класс 'active' блоку, чтобы показать его на странице
+    // active обычно используется для отображения скрытых элементов
+    obj_dom.classList.add('active')
+}
+
+// Находим все ссылки (<a>) на странице и преобразуем их в массив
+// [...document.querySelectorAll('a')] - spread оператор превращает NodeList в массив
+;[...document.querySelectorAll('a')].forEach((item, index) => {
+    // Для каждой ссылки добавляем обработчик события 'click' (клик мыши)
+    item.addEventListener('click', e => {
+        // Отменяем стандартное поведение ссылки (переход по href)
+        // Без этого страница могла бы перезагрузиться
+        e.preventDefault()
+        
+        // Получаем ID автомобиля из data-атрибута ссылки
+        // data-id="123" - так задается в HTML
+        let id = item.dataset.id
+        
+        // Находим все блоки с классом 'block_content'
+        let allBlocks = document.querySelectorAll('.block_content')
+        
+        // Перебираем все блоки контента
+        allBlocks.forEach(block => {
+            // У каждого блока удаляем класс 'active' (скрываем все блоки)
+            // classList.remove удаляет указанный CSS класс
+            block.classList.remove('active')
+        })
+        
+        // Загружаем данные для выбранного автомобиля
+        // Передаем ID и соответствующий блок контента (по индексу ссылки)
+        id_to_server(id, allBlocks[index])
+    })
+})
+
+
+
+<?php
+
+// === НАСТРОЙКА ЗАГОЛОВКОВ ДЛЯ РАБОТЫ С API ===
+
+// Разрешаем кросс-доменные запросы с любых сайтов (CORS)
+// Без этого браузер заблокирует запросы с других доменов
+header('Access-Control-Allow-Origin: *');
+
+// Разрешаем HTTP методы: GET (получить), POST (отправить), OPTIONS (проверка)
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+
+// Разрешаем заголовки: Content-Type (тип контента) и Accept (принимаемый формат)
+header('Access-Control-Allow-Headers: Content-Type, Accept');
+
+// Указываем, что сервер возвращает данные в формате JSON
+// Это важно для правильной обработки на клиенте
+header('Content-Type: application/json');
+
+// === БЛОК ОБРАБОТКИ ОШИБОК ===
+// try - пробуем выполнить код, если ошибка - переходим в catch
+try {
+    // === ПАРАМЕТРЫ ПОДКЛЮЧЕНИЯ К БАЗЕ ДАННЫХ ===
+    $host = '127.0.0.1';      // Адрес сервера БД (localhost)
+    $db = 'projectbaseautosell';   // Имя базы данных
+    $user = 'root';           // Имя пользователя MySQL
+    $pass = '';               // Пароль (пустой для локального сервера)
+    $charset = 'utf8';        // Кодировка (для поддержки русского языка)
+
+    // Строка подключения (DSN - Data Source Name)
+    // mysql:host=...;dbname=...;charset=... - формат для MySQL
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    
+    // Опции подключения PDO (PHP Data Objects)
+    $opt = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,  // Включаем режим ошибок (исключения)
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Данные возвращаются как ассоциативный массив
+        PDO::ATTR_EMULATE_PREPARES => false,  // Отключаем эмуляцию подготовленных запросов
+    ];
+    
+    // Создаем объект PDO для работы с базой данных
+    $pdo = new PDO($dsn, $user, $pass, $opt);
+    
+    // === ОБРАБОТКА GET-ПАРАМЕТРА id ===
+    // Проверяем, передан ли параметр 'id' в URL и не пустой ли он
+    // isset() - проверяет существование, intval() - преобразует в целое число
+    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    
+    // === ВЫПОЛНЕНИЕ ЗАПРОСА В ЗАВИСИМОСТИ ОТ НАЛИЧИЯ ID ===
+    if ($id > 0) {
+        // Если ID указан (больше 0) - получаем только один конкретный автомобиль
+        // Готовим SQL запрос с плейсхолдером ? (безопасно, защита от SQL инъекций)
+        $stmt = $pdo->prepare('SELECT * FROM carpost WHERE id = ?');
+        
+        // Выполняем запрос, подставляя вместо ? значение $id
+        $stmt->execute([$id]);
+        
+        // Получаем все найденные записи (будет 0 или 1 запись)
+        $result = $stmt->fetchAll();
+    } else {
+        // Если ID не указан - получаем ВСЕ автомобили из таблицы
+        // query() выполняет простой запрос без параметров
+        $stmt = $pdo->query('SELECT * FROM carpost');
+        
+        // Получаем все записи из таблицы
+        $result = $stmt->fetchAll();
+    }
+    
+    // === ОТПРАВКА ДАННЫХ КЛИЕНТУ ===
+    // Преобразуем массив PHP в JSON строку
+    // JSON_UNESCAPED_UNICODE - не преобразовывать русские буквы в \u0442\u0435\u043a\u0441\u0442
+    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    
+// === ОБРАБОТКА ОШИБОК ===
+} catch (PDOException $e) {
+    // Если произошла ошибка при работе с БД, отправляем клиенту JSON с ошибкой
+    // die() останавливает выполнение скрипта и выводит сообщение
+    // $e->getMessage() - получаем текст ошибки
+    echo json_encode(['error' => 'Подключение не удалось: ' . $e->getMessage()]);
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">  <!-- Кодировка для поддержки русского языка -->
+    <title>Автосалон</title>  <!-- Заголовок вкладки браузера -->
+    
+    <style>
+        /* Стили для оформления страницы */
+        
+        /* Блок контента по умолчанию скрыт */
+        .block_content {
+            display: none;      /* Скрываем элемент */
+            padding: 20px;     /* Внутренние отступы */
+            border: 1px solid #ddd;  /* Серая рамка */
+            margin-top: 20px;  /* Отступ сверху */
+        }
+        
+        /* Когда у блока есть класс active - показываем его */
+        .block_content.active {
+            display: block;     /* Показываем элемент как блочный */
+        }
+        
+        /* Стиль для карточки автомобиля */
+        .car-card {
+            margin-bottom: 20px;  /* Отступ снизу */
+            padding: 15px;        /* Внутренние отступы */
+            border: 1px solid #ccc;  /* Светло-серая рамка */
+            border-radius: 5px;   /* Скругленные углы */
+        }
+        
+        /* Разделитель между карточками */
+        .car-card hr {
+            margin: 10px 0;   /* Отступы сверху и снизу */
+        }
+        
+        /* Стиль для ссылок */
+        a {
+            cursor: pointer;       /* Курсор в виде руки при наведении */
+            margin-right: 10px;    /* Отступ справа между ссылками */
+            color: blue;           /* Синий цвет текста */
+            text-decoration: underline;  /* Подчеркивание */
+        }
+    </style>
+</head>
+<body>
+    <!-- Ссылки для выбора автомобилей -->
+    <!-- data-id - пользовательский атрибут для хранения ID автомобиля -->
+    <a data-id="1">Автомобиль 1</a>
+    <a data-id="2">Автомобиль 2</a>
+    <a data-id="3">Автомобиль 3</a>
+    
+    <!-- Блоки для вывода информации об автомобилях -->
+    <!-- Каждая ссылка соответствует своему блоку по порядку -->
+    <div class="block_content"></div>  <!-- Блок для первой ссылки -->
+    <div class="block_content"></div>  <!-- Блок для второй ссылки -->
+    <div class="block_content"></div>  <!-- Блок для третьей ссылки -->
+
+    <script>
+        // Здесь размещается JavaScript код, описанный выше
+    </script>
+</body>
+</html>
