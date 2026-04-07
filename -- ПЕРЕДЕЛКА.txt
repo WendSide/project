@@ -1,1 +1,103 @@
 После переделки карточки и их отправления из бд доделать избранное авто
+
+
+js
+
+async function id_to_server(id, obj_dom) {
+	let url = `http://localhost/myserver/carpost.php/get?id=${id}`
+	let response = await fetch(url, {
+		method: 'GET',
+		headers: { Accept: 'application/json' },
+	})
+
+	let param = await response.json()
+
+	obj_dom.innerHTML = param[0].id
+    obj_dom.innerHTML = param[1].mark
+	obj_dom.classList.add('active')
+
+}
+
+
+;[...document.querySelectorAll('a')].forEach((item, index) => {
+	item.addEventListener('click', e => {
+		let id = item.dataset.id
+		let block_content = document.querySelectorAll('.block_content')
+		for (var i = 0; i < block_content.length; i++) {
+			if (block_content[i].classList.contains('active')) {
+				block_content[i].classList.remove('active')
+			}
+		}
+		id_to_server(id, block_content[index])
+	})
+})
+
+
+php
+
+<?php
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Accept');
+header('Content-Type: application/json');
+
+try {
+    $host = '127.0.0.1';
+    $db = 'projectbaseautosell';
+    $user = 'root';
+    $pass = '';
+    $charset = 'utf8';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $opt = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+    // Получение объекта PDO
+    $pdo = new PDO($dsn, $user, $pass, $opt);
+    // Получение данных из таблицы carpost
+    $stmt = $pdo->query('SELECT * FROM carpost');
+
+    // Вывод данных построчно
+    while ($row = $stmt->fetch()) {
+        echo  $row['id'] ."". $row['mark'] . "" . $row['model'] . "" . $row['release'] . "" . $row['price'] . "" . $row['mileage'] . "" . $row['ecapacity'] . "" . $row['transmission'] . "" . $row['condition'] . "" . $row['numberowners']  . "" . $row['description'] . "" . $row['sity'] . "" . $row['numberphone']  . "" . $row['owner'];
+        echo  '                                                                                                                                                                                                                                                       ';
+    }
+
+
+
+// через br сделать разделение
+
+} catch (PDOException $e) {
+    die('Подключение не удалось: ' . $e->getMessage());
+}
+
+
+// id mark model release price mileage ecapacity transmission condition numberowners description sity numberphone owner 
+
+
+
+
+
+?>
+
+<!-- mark
+model
+release
+price
+mileage
+ecapacity
+transmission
+condition
+numberowners
+description
+sity
+numberphone
+owner  -->
+
+<!-- while ($row = $stmt->fetch()) {
+        echo  $row['id'] ." Марка ". $row['mark'] . " Модель " . $row['model'] . " Выпущен " . $row['release'] . " Цена " . $row['price'] . " Пробег " . $row['mileage'] . " Мощность двигателя " . $row['ecapacity'] . " Коробка передач " . $row['transmission'] . " Состояние " . $row['condition'] . " Количество владельцев " . $row['numberowners']  . " Описание авто " . $row['description'] . " Город " . $row['sity'] . " Номер владельца " . $row['numberphone']  . " Владелец " . $row['owner'];
+        echo  '                                                                                                                                                                                                                                                       ';
+    } -->
